@@ -3,22 +3,19 @@
 def parallel_processing(n, m, data):
     output = []
 
-    threads = []
-
-    for i in range(n):
-        threads.append([i, 0]) 
+    time_thread = [0] * n
 
     for i in range(m):
 
         t = data[i]
         thread_index = 0
-        start_next_task = threads[0][1]
+        start_next_task = time_thread[0]
 
         for j in range(1, n):
-            if threads[j][1] < start_next_task:
+            if time_thread[j] < start_next_task:
                 thread_index = j
-                start_next_task = threads[j][1]
-        threads[thread_index][1] += t
+                start_next_task = time_thread[j]
+        time_thread[thread_index][1] += t
         output.append((thread_index, start_next_task))
 
     return output
