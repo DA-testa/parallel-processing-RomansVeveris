@@ -15,7 +15,7 @@ def parallel_processing(n, m, data):
             if time_thread[j] < start_next_task:
                 thread_index = j
                 start_next_task = time_thread[j]
-        time_thread[thread_index][1] += t
+        time_thread[thread_index] += t
         output.append((thread_index, start_next_task))
 
     return output
